@@ -19,6 +19,13 @@ function App() {
       console.error('Error fetching data:', error);
     }
   };
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -40,12 +47,23 @@ function App() {
       </div>
       {userData && (
         <div className="mt-8">
-          <img src={userData.avatar_url} alt="User Avatar" className="w-20 h-20 rounded-full" />
-          <h2 className="text-xl font-bold mt-4">{userData.name}</h2>
+          <div className='flex'>
+            <img src={userData.avatar_url} alt="User Avatar" className="w-20 h-20 rounded-full" />
+            <div>
+              <h2 className="text-xl font-bold mt-4">{userData.name}</h2>
+              <span>@{userData.login}</span><br/>
+              <span>Joined On {formatDate(userData.created_at)}</span>
+            </div>
+          </div>
           <p className="text-gray-700">{userData.bio}</p>
           <p className="text-gray-700">Followers: {userData.followers}</p>
           <p className="text-gray-700">Following: {userData.following}</p>
           <p className="text-gray-700">Repos: {userData.public_repos}</p>
+          <p className="text-gray-700">Location: {userData.location}</p>
+          <p className="text-gray-700">Twitter: {userData.twitter_username}</p>
+          <p className="text-gray-700">Website: {userData.blog}</p>
+          <p className="text-gray-700">Company: {userData.company}</p>
+
         </div>
       )}
     </div>
