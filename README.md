@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Github users search app created with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This app helps you to find the github users  by their names or usernames. It uses GitHub API for fetching data and Tailwind CSS for beautify.
 
 ## Available Scripts
 
